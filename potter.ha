@@ -1,5 +1,5 @@
 fn price(books: []int) int = {
-	return 0;
+	return len(books): int * 8;
 };
 
 @test fn basics() void = {
