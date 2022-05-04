@@ -1,4 +1,3 @@
-use types;
 use sort;
 
 fn cmpint(a: const *void, b: const *void) int = {
