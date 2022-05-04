@@ -39,3 +39,10 @@ fn price(books: []int) f32 = {
 	assert(price([0, 1, 2, 4]) == 8.0 * 4.0 * 0.8);
 	assert(price([0, 1, 2, 3, 4]) == 8.0 * 5.0 * 0.75);
 };
+
+@test fn several_discounts() void = {
+	assert(price([0, 0, 1]) == 8.0 + 8.0 * 2.0 * 0.95);
+	assert(price([0, 0, 1, 1]) == 2.0 * 8.0 * 2.0 * 0.95);
+	assert(price([0, 0, 1, 2, 2, 3]) == 8.0 * 4.0 * 0.8 + 8.0 * 2.0 * 0.95);
+	assert(price([0, 1, 1, 2, 3, 4]) == 8.0 + 8.0 * 5.0 * 0.75);
+};
