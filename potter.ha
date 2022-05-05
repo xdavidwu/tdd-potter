@@ -90,7 +90,7 @@ fn price_slots(slots: [5]int) f32 = {
 
 	if (slots[2] != 0) {
 		if (slots[0] != 0) {
-			for (let j = 0; j < 5; j += 1) {
+			for (let j = 0; j < 4; j += 1) {
 				for (let k = j + 1; k < 5; k += 1) {
 					let nslots = slots;
 					for (let i = 0; i < 5; i += 1) {
@@ -122,10 +122,10 @@ fn price_slots(slots: [5]int) f32 = {
 	};
 
 	if (slots[3] != 0) {
-		for (let i = 0; i < 5; i += 1) {
-			if (slots[i] == 0) continue;
-			for (let j = i + 1; j < 5; j += 1) {
-				if (slots[j] == 0) continue;
+		for (let i = 4; i >= 1; i -= 1) {
+			if (slots[i] == 0) break;
+			for (let j = i - 1; j >= 0; j -= 1) {
+				if (slots[j] == 0) break;
 				let nslots = slots;
 				nslots[i] -= 1;
 				nslots[j] -= 1;
@@ -136,8 +136,8 @@ fn price_slots(slots: [5]int) f32 = {
 	};
 
 	if (slots[4] != 0) {
-		for (let i = 0; i < 5; i += 1) {
-			if (slots[i] == 0) continue;
+		for (let i = 4; i >= 0; i -= 1) {
+			if (slots[i] == 0) break;
 			let nslots = slots;
 			nslots[i] -= 1;
 			let p = 8.0 + price_slots(nslots);
