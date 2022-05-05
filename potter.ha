@@ -1,4 +1,3 @@
-use fmt;
 use hash;
 use hash::fnv;
 use math;
