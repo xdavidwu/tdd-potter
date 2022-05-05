@@ -17,24 +17,24 @@ type res = struct {
 let hashmap: [HASHMAP_BUCKETS][]res = [[]...];
 
 fn hashmap_insert(slots: [5]int, val: f32) void = {
-	let hash = fnv::fnv64a();
+	let hash = fnv::fnv32a();
 	let buf: [_]u8 = [slots[0]: u8, slots[1]: u8, slots[2]: u8, slots[3]: u8, slots[4]: u8];
 	hash::write(&hash, buf[..]);
 	let v = res {
 		slots = slots,
 		val = val,
 	};
-	let bucket = &hashmap[fnv::sum64(&hash): size % HASHMAP_BUCKETS];
+	let bucket = &hashmap[fnv::sum32(&hash): size % HASHMAP_BUCKETS];
 	append(bucket, v);
 };
 
 type notfound = !void;
 
 fn hashmap_lookup(slots: [5]int) (f32 | notfound) = {
-	let hash = fnv::fnv64a();
+	let hash = fnv::fnv32a();
 	let buf: [_]u8 = [slots[0]: u8, slots[1]: u8, slots[2]: u8, slots[3]: u8, slots[4]: u8];
 	hash::write(&hash, buf[..]);
-	let bucket = &hashmap[fnv::sum64(&hash): size % HASHMAP_BUCKETS];
+	let bucket = &hashmap[fnv::sum32(&hash): size % HASHMAP_BUCKETS];
 	for (let i = 0z; i < len(bucket); i += 1) {
 		if (bucket[i].slots[0] == slots[0] &&
 				bucket[i].slots[1] == slots[1] &&
