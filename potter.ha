@@ -7,7 +7,7 @@ fn cmpint(a: const *void, b: const *void) int = {
 	return *(a: const *int)-*(b: const *int);
 };
 
-def HASHMAP_BUCKETS: size = 256;
+def HASHMAP_BUCKETS: size = 512;
 
 type res = struct {
 	slots: [5]int,
